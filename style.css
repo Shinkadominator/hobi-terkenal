@@ -1,0 +1,348 @@
+:root {
+            --background-image: 'images/background.jpeg';
+        }
+        body {
+            font-size: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px; /* Gunakan font modern seperti Poppins */
+            line-height: 1.6; /* Berikan spasi antar baris */
+            color: #333; /* Ubah warna teks default */
+            background-color: #0056b3;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: rgb(24, 18, 18);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        header nav {
+            display: flex;
+            justify-content: center;
+        }
+        header nav a {
+            color: rgb(13, 118, 238);
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            transition: background 0.3s;
+        }
+        header nav a:hover {
+            background: rgb(20, 122, 255);
+            color: black;
+        }
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 20px;
+        }
+        .home {
+            background-image: url('images/background.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(16, 165, 252);
+            text-align: center;
+        }
+        .home h1 {
+            margin: 20px;
+            font-size: 48px;
+        }
+        .about, .menu, .testimonials, .gallery, .contact, .user-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+        #about h2 {
+            font-size: 40px; /* Perbesar teks judul */
+        }
+        #about p {
+            font-size: 30px; /* Perbesar teks paragraf */
+        }
+        .menu, .testimonials {
+            flex-direction: row;
+        }
+        .menu .box, .testimonials .box, .gallery .image-box {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .contact input, .contact textarea, .contact button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .contact button {
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .contact button:hover {
+            background: #444;
+        }
+        .user-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+        .user-page .content {
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            gap: 20px;
+        }
+        .user-page img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap; /* Pastikan kotak tidak memaksa layout */
+            justify-content: center; /* Rata tengah */
+            gap: 10px; /* Beri jarak antar kotak */
+        }
+        .menu .box {
+            flex: none; /* Hapus properti flex yang memaksa ukuran */
+            max-width: 370px; /* Tetapkan lebar maksimum untuk kotak */
+            margin: 10px auto; /* Pastikan kotak selalu sejajar di tengah */
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan */
+        }
+        .menu .box img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover; /* Pastikan gambar proporsional */
+        }
+        .extra-page .content {
+            display: flex; /* Atur layout agar menggunakan flexbox */
+            align-items: center; /* Rata tengah secara vertikal */
+            gap: 20px; /* Beri jarak antara gambar dan teks */
+        }
+        .extra-page img {
+            width: 500px; /* Tetapkan lebar gambar */
+            height: auto; /* Pertahankan rasio gambar */
+            object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+            border-radius: 10px; /* Opsional, tambahkan sudut melengkung */
+        }
+        .extra-page div {
+            flex: 1; /* Teks akan menggunakan sisa ruang */
+            text-align: left; /* Atur teks rata kiri */
+        }
+        #about {
+            padding: 20px;
+            background-color: #f4f4f4; /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Border kotak */
+            border-radius: 10px; /* Sudut melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+            max-width: 1200px; /* Lebar maksimum kotak */
+            margin: 0 auto; /* Pusatkan kotak */
+        }
+        .user-page {
+            padding: 10px 20px;  /* Mengatur jarak antara konten dengan batas kotak */
+            margin: 20px auto;   /* Mengatur jarak antara kotak dengan elemen lain */
+            background-color: #f4f4f4;  /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Menambahkan border tipis berwarna abu-abu */
+            border-radius: 10px;  /* Membuat sudut kotak menjadi melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan halus pada kotak */
+            max-width: 1200px;  /* Membatasi lebar maksimum kotak agar tidak terlalu lebar */
+        }
+        
+        /* Kotak untuk halaman Hobi dan Kegiatan */
+        .extra-page {
+            padding: 10px 20px;  /* Mengatur jarak antara konten dengan batas kotak */
+            margin: 20px auto;   /* Mengatur jarak antara kotak dengan elemen lain */
+            background-color: #f4f4f4;  /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Menambahkan border tipis berwarna abu-abu */
+            border-radius: 10px;  /* Membuat sudut kotak menjadi melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan halus pada kotak */
+            max-width: 1200px;  /* Membatasi lebar maksimum kotak agar tidak terlalu lebar */
+        }
+        .client_section {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+        .client_container {
+            text-align: center;
+        }
+        .client_box-container .box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            height: auto;  /* Mengatur tinggi box agar lebih fleksibel */
+        }
+        .img-box {
+            display: flex;          /* Mengubah ke flexbox */
+            justify-content: center; /* Pusatkan secara horizontal */
+            align-items: center;    /* Pusatkan secara vertikal */
+            height: 100%;           /* Pastikan gambar sepenuhnya di dalam box */
+        }
+        .img-box img {
+            border-radius: 50%;
+            width: 10vw;       /* Mengatur lebar gambar */
+            height: 10vw;      /* Mengatur tinggi gambar agar sama dengan lebar */
+            max-width: 10vw;   /* Membatasi lebar gambar agar tidak lebih besar */
+            max-height: 10vw;  /* Membatasi tinggi gambar agar tidak lebih besar */
+            object-fit: cover; /* Menjaga gambar tetap proporsional */
+        }
+        .detail-box h4 {
+            margin: 15px 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .detail-box p {
+            font-size: 12px;
+            color: #666;
+        }
+        .detail-box img {
+            width: 20px;
+            margin-top: 10px;
+        }
+          /* Custom navigation buttons */
+        .custom-nav {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .custom-nav button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .custom-nav button:hover {
+            background-color: #0056b3;
+        }
+          /* Perkecil ukuran slide */
+        .owl-carousel {
+            display: flex;
+            justify-content: center;
+            width: 70%;  /* Mengatur lebar carousel */
+            margin: 0 auto;
+        }
+      
+        .owl-carousel .owl-item {
+            width: 30%;  /* Lebar setiap item lebih kecil */
+            padding: 10px;
+            box-sizing: border-box;  /* Pastikan padding tidak mempengaruhi lebar item */
+        }
+      
+        .owl-carousel .owl-item .box {
+            height: auto;  /* Mengatur agar box mengikuti ukuran item */
+        }
+      
+          /* Styling pada item container */
+        .client_box-container {
+            max-width: 90%; /* Membatasi lebar container */
+            margin: 0 auto;
+        }
+        .custom-gallery-container {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .custom-gallery {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          width: 80%;
+          margin-top: 20px;
+        }
+
+        .custom-gallery img {
+          width: 80%;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: transform 0.3s ease;
+        }
+
+        .custom-gallery img:hover {
+          transform: scale(1.05);
+        }
+
+        /* Modal styles */
+        .custom-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .custom-modal img {
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 10px;
+          object-fit: contain;
+          display: block;
+        }
+
+        .custom-modal .close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: none;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000; /* Pastikan modal di atas elemen lainnya */
+        }
+      
+        /* CSS untuk tombol X */
+        .modal .close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 1001; /* Pastikan tombol close di atas gambar modal */
+        }

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobby Blog</title>
+    <!-- Menambahkan link ke Google Fonts untuk Oswald -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Link to CSS (Bootstrap & Owl Carousel) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --background-image: 'images/background.jpeg';
+        }
+        body {
+            font-size: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px; /* Gunakan font modern seperti Poppins */
+            line-height: 1.6; /* Berikan spasi antar baris */
+            color: #333; /* Ubah warna teks default */
+            background-color: #0056b3;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: rgb(24, 18, 18);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        header nav {
+            display: flex;
+            justify-content: center;
+        }
+        header nav a {
+            color: rgb(13, 118, 238);
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            transition: background 0.3s;
+        }
+        header nav a:hover {
+            background: rgb(20, 122, 255);
+            color: black;
+        }
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 20px;
+        }
+        .home {
+            background-image: url('images/background.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(16, 165, 252);
+            text-align: center;
+        }
+        .home h1 {
+            margin: 20px;
+            font-size: 48px;
+        }
+        .about, .menu, .testimonials, .gallery, .contact, .user-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+        #about h2 {
+            font-size: 40px; /* Perbesar teks judul */
+        }
+        #about p {
+            font-size: 30px; /* Perbesar teks paragraf */
+        }
+        .menu, .testimonials {
+            flex-direction: row;
+        }
+        .menu .box, .testimonials .box, .gallery .image-box {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .contact input, .contact textarea, .contact button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .contact button {
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .contact button:hover {
+            background: #444;
+        }
+        .user-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+        .user-page .content {
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            gap: 20px;
+        }
+        .user-page img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap; /* Pastikan kotak tidak memaksa layout */
+            justify-content: center; /* Rata tengah */
+            gap: 10px; /* Beri jarak antar kotak */
+        }
+        .menu .box {
+            flex: none; /* Hapus properti flex yang memaksa ukuran */
+            max-width: 370px; /* Tetapkan lebar maksimum untuk kotak */
+            margin: 10px auto; /* Pastikan kotak selalu sejajar di tengah */
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan */
+        }
+        .menu .box img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover; /* Pastikan gambar proporsional */
+        }
+        .extra-page .content {
+            display: flex; /* Atur layout agar menggunakan flexbox */
+            align-items: center; /* Rata tengah secara vertikal */
+            gap: 20px; /* Beri jarak antara gambar dan teks */
+        }
+        .extra-page img {
+            width: 500px; /* Tetapkan lebar gambar */
+            height: auto; /* Pertahankan rasio gambar */
+            object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+            border-radius: 10px; /* Opsional, tambahkan sudut melengkung */
+        }
+        .extra-page div {
+            flex: 1; /* Teks akan menggunakan sisa ruang */
+            text-align: left; /* Atur teks rata kiri */
+        }
+        #about {
+            padding: 20px;
+            background-color: #f4f4f4; /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Border kotak */
+            border-radius: 10px; /* Sudut melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+            max-width: 1200px; /* Lebar maksimum kotak */
+            margin: 0 auto; /* Pusatkan kotak */
+        }
+        .user-page {
+            padding: 10px 20px;  /* Mengatur jarak antara konten dengan batas kotak */
+            margin: 20px auto;   /* Mengatur jarak antara kotak dengan elemen lain */
+            background-color: #f4f4f4;  /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Menambahkan border tipis berwarna abu-abu */
+            border-radius: 10px;  /* Membuat sudut kotak menjadi melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan halus pada kotak */
+            max-width: 1200px;  /* Membatasi lebar maksimum kotak agar tidak terlalu lebar */
+        }
+        
+        /* Kotak untuk halaman Hobi dan Kegiatan */
+        .extra-page {
+            padding: 10px 20px;  /* Mengatur jarak antara konten dengan batas kotak */
+            margin: 20px auto;   /* Mengatur jarak antara kotak dengan elemen lain */
+            background-color: #f4f4f4;  /* Warna latar belakang kotak */
+            border: 2px solid #ddd; /* Menambahkan border tipis berwarna abu-abu */
+            border-radius: 10px;  /* Membuat sudut kotak menjadi melengkung */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan halus pada kotak */
+            max-width: 1200px;  /* Membatasi lebar maksimum kotak agar tidak terlalu lebar */
+        }
+        .client_section {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+        .client_container {
+            text-align: center;
+        }
+        .client_box-container .box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            height: auto;  /* Mengatur tinggi box agar lebih fleksibel */
+        }
+        .img-box {
+            display: flex;          /* Mengubah ke flexbox */
+            justify-content: center; /* Pusatkan secara horizontal */
+            align-items: center;    /* Pusatkan secara vertikal */
+            height: 100%;           /* Pastikan gambar sepenuhnya di dalam box */
+        }
+        .img-box img {
+            border-radius: 50%;
+            width: 10vw;       /* Mengatur lebar gambar */
+            height: 10vw;      /* Mengatur tinggi gambar agar sama dengan lebar */
+            max-width: 10vw;   /* Membatasi lebar gambar agar tidak lebih besar */
+            max-height: 10vw;  /* Membatasi tinggi gambar agar tidak lebih besar */
+            object-fit: cover; /* Menjaga gambar tetap proporsional */
+        }
+        .detail-box h4 {
+            margin: 15px 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .detail-box p {
+            font-size: 12px;
+            color: #666;
+        }
+        .detail-box img {
+            width: 20px;
+            margin-top: 10px;
+        }
+          /* Custom navigation buttons */
+        .custom-nav {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .custom-nav button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .custom-nav button:hover {
+            background-color: #0056b3;
+        }
+          /* Perkecil ukuran slide */
+        .owl-carousel {
+            display: flex;
+            justify-content: center;
+            width: 70%;  /* Mengatur lebar carousel */
+            margin: 0 auto;
+        }
+      
+        .owl-carousel .owl-item {
+            width: 30%;  /* Lebar setiap item lebih kecil */
+            padding: 10px;
+            box-sizing: border-box;  /* Pastikan padding tidak mempengaruhi lebar item */
+        }
+      
+        .owl-carousel .owl-item .box {
+            height: auto;  /* Mengatur agar box mengikuti ukuran item */
+        }
+      
+          /* Styling pada item container */
+        .client_box-container {
+            max-width: 90%; /* Membatasi lebar container */
+            margin: 0 auto;
+        }
+        .custom-gallery-container {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .custom-gallery {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          width: 80%;
+          margin-top: 20px;
+        }
+
+        .custom-gallery img {
+          width: 80%;
+          cursor: pointer;
+          border-radius: 5px;
+          transition: transform 0.3s ease;
+        }
+
+        .custom-gallery img:hover {
+          transform: scale(1.05);
+        }
+
+        /* Modal styles */
+        .custom-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: none;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .custom-modal img {
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 10px;
+          object-fit: contain;
+          display: block;
+        }
+
+        .custom-modal .close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: none;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000; /* Pastikan modal di atas elemen lainnya */
+        }
+      
+        /* CSS untuk tombol X */
+        .modal .close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 1001; /* Pastikan tombol close di atas gambar modal */
+        }
+        
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+  
+    <!-- Section 1 -->
+    <section id="home" class="home">
+    </section>
+  
+    <!-- Section 2 -->
+    <section id="about" class="about">
+        <h2>Apa itu Hobi?</h2>
+
+        <p>Hobi adalah kegiatan yang dilakukan secara rutin atau berkala untuk kesenangan, relaksasi, atau kepuasan pribadi, tanpa tekanan atau kewajiban tertentu. Hobi biasanya melibatkan minat yang mendalam pada suatu aktivitas, seperti olahraga, seni, membaca, bermain game, memasak, atau mengoleksi sesuatu. Selain memberikan hiburan, hobi juga dapat membantu mengurangi stres dan meningkatkan keterampilan atau pengetahuan.</p>
+    </section>
+  
+    <!-- Section 3 -->
+    <section id="menu" class="menu">
+        <div class="box">
+            <img src="images/fandy.jpeg" alt="User 1">
+            <h3>Fandy Yoga Aditama</h3>
+            <p>Hai, perkenalkan namaku Fandy Yoga Aditama, Saya berasal dari Boyolali. Disini saya akan menceritakan hobi saya.</p>
+            <a href="#user1">More</a>
+        </div>
+        <div class="box">
+            <img src="images/celvin.jpeg" alt="User 2">
+            <h3>Celvin Ardyatmajaya Putra</h3>
+            <p>Hai, perkenalkan namaku Celvin Ardyatmajaya Putra, Saya berasal dari Sragen. Disini saya akan menceritakan hobi saya.</p>
+            <a href="#user2">More</a>
+        </div>
+        <div class="box">
+            <img src="images/rafid.jpeg" alt="User 3">
+            <h3>Miftah Rafid Firdaus</h3>
+            <p>Hai, Perkenalkan nama saya Miftah Rafid Firdaus, Saya berasal dari Riau. Disini saya akan menceritakan hobi saya.</p>
+            <a href="#user3">More</a>
+        </div>
+    </section>
+  
+    <!-- Section 4 -->
+    <section id="user1" class="user-page">
+        <div class="content">
+            <img src="images/fandy.jpeg" alt="User 1">
+            <div>
+                <h2>Fandy Yoga Aditama</h2>
+                <p>L300240071</p>
+            </div>
+        </div>
+    </section>
+    <section id="user1-extra" class="extra-page">
+        <div class="content">
+            <img src="images/catur.jpeg" alt="Fandy Extra">
+            <div>
+                <h2>Fandy Yoga Aditama - Hobi dan Kegiatan</h2>
+                <p>Fandy hobi bermain Catur. Dia menikmati kedalaman strategi yang ditawarkan oleh permainan ini. Karena merasa tertantang Fandy terus meningkatkan kemampuannya dalam berpikir taktis dan strategis. </p>
+                <p>Fandy sering menghabiskan waktu luangnya bermain catur secara online melawan pemain dari seluruh dunia. Hobi ini memberinya rasa puas tersendiri ketika berhasil memenangkan pertandingan setelah berpikir matang dan merencanakan langkah-langkahnya dengan hati-hati.</p>
+            </div>
+        </div>
+    </section>
+    <section id="user2" class="user-page">
+        <div class="content">
+            <img src="images/celvin.jpeg" alt="User 2">
+            <div>
+                <h2>Celvin Ardyatmajaya Putra</h2>
+                <p>L300240075</p>
+            </div>
+        </div>
+    </section>
+    <section id="user2-extra" class="extra-page">
+        <div class="content">
+            <img src="images/voli.jpeg" alt="Celvin Extra">
+            <div>
+                <h2>Celvin Ardyatmajaya Putra - Hobi dan Kegiatan</h2>
+                <p>Celvin hobi bermain Voli. Sejak mengenal olahraga ini, Celvin merasa voli menjadi salah satu cara terbaik untuk menjaga kebugarannya. Bermain voli memberinya kesempatan untuk bersosialisasi sekaligus melatih keterampilan tim, terutama dalam komunikasi dan koordinasi.</p>
+                <p>Celvin merasakan kesenangan dalam berolahraga sekaligus membangun kekuatan fisik. Baginya, voli bukan hanya tentang menang, tetapi juga tentang kerja sama, disiplin, dan menikmati setiap detik permainan.</p>
+            </div>
+        </div>
+    </section>
+    <section id="user3" class="user-page">
+        <div class="content">
+            <img src="images/rafid.jpeg" alt="User 3">
+            <div>
+                <h2>Miftah Rafid Firdaus</h2>
+                <p>L300240069</p>
+            </div>
+        </div>
+    </section>
+    <section id="user3-extra" class="extra-page">
+        <div class="content">
+            <img src="images/game.jpeg" alt="Miftah Extra">
+            <div>
+                <h2>Miftah Rafid Firdaus - Hobi dan Kegiatan</h2>
+                <p>Rafid memiliki hobi bermain game Pubg Mobile. Dia menyukai momen di mana dia bisa bermain dengan temannya. Karena sejak kecil Rafid sudah bermain game, yaitu game pertama nya "Black" di ps2.</p>
+                <p>Sering kali Rafid menghabiskan akhir pekannya dengan bermain game Pubg Mobile bareng temannya yang berada di Riau. Karena Rafid kangen di mana dia bisa ngumpul" bareng temannya untuk bermain game bersama.</p>
+            </div>
+        </div>
+    </section>
+  
+    <!-- Section 5 -->
+    <section id="testimonials" class="testimonials">
+        <section class="client_section layout_padding-bottom">
+            <div class="container">
+              <div class="client_container">
+                <div class="heading_container">
+                  <h2>TESTIMONIALS</h2>
+                </div>
+                <div class="client_box-container">
+                  <div class="owl-carousel">
+                    <!-- Item 1 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/vladimirkramnik.jpeg" alt="Client 1">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Vladimir Kramnik</h4>
+                          <p>Juara Dunia Catur tahun 2007</p>
+                          <img src="images/vladimirkramnik-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/magnuscarlsen.jpeg" alt="Client 2">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Magnus Carlsen</h4>
+                          <p>Juara Dunia Catur tahun 2023</p>
+                          <img src="images/magnuscarlsen-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/maximmikhaylov.jpeg" alt="Client 3">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Maxim Mikhaylov</h4>
+                          <p>MVP Liga Champion CEV 2017</p>
+                          <img src="images/maximmikhaylov-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/wilfredoleon.jpeg" alt="Client 4">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Wilfredo Leon</h4>
+                          <p>MVP Liga Champion CEV 2017</p>
+                          <img src="images/wilfredoleon-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/muhammadalbi.jpeg" alt="Client 4">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Muhammad Albi</h4>
+                          <p>Juara PMCO Global Finals 2019</p>
+                          <img src="images/muhammadalbi-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="item">
+                      <div class="box">
+                        <div class="img-box">
+                          <img src="images/bagaspramudita.jpeg" alt="Client 4">
+                        </div>
+                        <div class="detail-box">
+                          <h4>Bagas Pramudita</h4>
+                          <p>Juara PMCO Global Finals 2019</p>
+                          <img src="images/bagaspramudita-quotes.jpeg" alt="Quote Icon">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-nav">
+                  <button id="prevBtn">&lt;</button>
+                  <button id="nextBtn">&gt;</button>
+                </div>
+              </div>
+            </div>
+          </section>
+    </section>
+  
+    <!-- Repeat the structure for all 12 sections as needed -->
+    <!-- Section for Gallery -->
+    <section id="gallery" class="gallery">
+      <div class="custom-gallery-container">
+        <h1>Galery</h1>
+        <div class="custom-gallery">
+            <img src="images/turnamen-catur-1.jpeg" alt="Image 1">
+            <img src="images/turnamen-voli-1.jpeg" alt="Image 2">
+            <img src="images/turnamen-pubg-1.jpeg" alt="Image 3">
+            <img src="images/turnamen-catur-2.jpeg" alt="Image 4">
+            <img src="images/turnamen-voli-2.jpeg" alt="Image 5">
+            <img src="images/turnamen-pubg-2.jpeg" alt="Image 6">
+        </div>
+
+        <div class="custom-modal" id="modal">
+            <button class="close" id="close-btn">X</button>
+            <img src="" alt="Large Image" id="modal-img">
+        </div>
+    </div>
+
+        <div class="modal" id="modal">
+            <button class="close" id="close-btn">X</button>
+            <img src="" alt="Large Image" id="modal-img">
+        </div>
+    </div>
+    </section>
+  
+    <!-- Section for Contact -->
+    <section id="contact" class="contact">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Your Message"></textarea>
+        <button>Submit</button>
+    </section>
+    <script>
+        // Ambil elemen section dengan ID "home"
+        const homeSection = document.querySelector('#home');
+        
+        // Ambil nilai dari atribut data-bg
+        const backgroundImage = homeSection.getAttribute('data-bg');
+        
+        // Set background image sesuai nilai yang diambil
+        homeSection.style.backgroundImage = url('${backgroundImage}');
+    </script>
+    <!-- JavaScript (jQuery & Owl Carousel) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+  $(document).ready(function () {
+    const owl = $(".owl-carousel").owlCarousel({
+      loop: true,               // Agar carousel terus berputar
+      margin: 10,               // Jarak antar item
+      nav: false,               // Matikan navigasi default Owl
+      dots: false,              // Matikan dots navigasi
+      items: 2,                 // Tampilkan 2 item per waktu
+      autoplay: false,          // Matikan autoplay (untuk kontrol manual dengan tombol)
+      autoplayTimeout: 3000,    // Waktu antar slide otomatis (jika autoplay diaktifkan)
+      responsive: {
+        0: { items: 1 },        // Menampilkan 1 item pada layar kecil
+        600: { items: 1 },      // Tampilkan 1 item pada layar 600px
+        1000: { items: 2 }      // Tampilkan 2 item pada layar besar
+      }
+    });
+
+    // Custom navigation buttons untuk berpindah 2 slide sekaligus
+    $("#prevBtn").click(function () {
+      owl.trigger('prev.owl.carousel', [2]);  // Pindah 2 slide ke belakang
+    });
+    $("#nextBtn").click(function () {
+      owl.trigger('next.owl.carousel', [2]);  // Pindah 2 slide ke depan
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      const closeBtn = document.getElementById('close-btn');
+      const galleryImages = document.querySelectorAll('.gallery img'); // Pastikan kelas ini sesuai
+
+      // Pastikan modal dan tombol close ada di DOM
+      if (!modal || !closeBtn) {
+          console.error('Modal atau tombol close tidak ditemukan.');
+          return;
+      }
+
+      // Ketika gambar diklik, tampilkan gambar di dalam modal
+      galleryImages.forEach(image => {
+          image.addEventListener('click', () => {
+              modal.style.display = 'flex'; // Tampilkan modal
+              modalImg.src = image.src; // Set gambar modal sesuai dengan gambar yang diklik
+          });
+      });
+
+      // Menutup modal ketika tombol 'X' diklik atau klik di luar modal
+      modal.addEventListener('click', (event) => {
+          // Jika yang diklik adalah tombol 'X' atau area luar modal, tutup modal
+          if (event.target === modal || event.target === closeBtn) {
+              modal.style.display = 'none'; // Sembunyikan modal
+          }
+      });
+
+      // Pastikan event klik tombol 'X' tidak diteruskan ke modal
+      closeBtn.addEventListener('click', (event) => {
+          console.log('Tombol X diklik!'); // Ini untuk debugging
+          event.stopPropagation(); // Mencegah klik di luar tombol 'X' mempengaruhi modal
+          modal.style.display = 'none'; // Sembunyikan modal
+      });
+  });
+</script>
+
+</body>
+</html>
+  </body>
+  </html>
